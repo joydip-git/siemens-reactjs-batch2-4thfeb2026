@@ -1,12 +1,16 @@
 //import { Fragment } from "react/jsx-runtime";
-
-const Counter = () => {
+type CounterPropType = {
+    counterValue: number,
+    handler: () => void
+}
+const Counter = ({ counterValue, handler }: Readonly<CounterPropType>) => {
+    // args.counterValue=100
     return (
         // <Fragment>
         <>
-            <span>Counter: &nbsp; {counter}</span>
+            <span>Counter: &nbsp; {counterValue}</span>
             <br />
-            <button type="button" onClick={counterHandler}>Increase</button>
+            <button type="button" onClick={handler}>Increase</button>
             {/* </Fragment > */}
         </>
     )
@@ -14,6 +18,6 @@ const Counter = () => {
 
 export default Counter
 
-function Frag(props) {
-    return props.children
-}
+// function Frag(props) {
+//     return props.children
+// }

@@ -34,4 +34,17 @@ class App{
 {{x}}
 <button (click)="update()">
 
+function useState<T>(intialState:T){
+	let data = initialState
+	async function update(newState:T){
+		data = newState
+	}
+
+	return [data,update]
+}
+
+
+
+
+
 
