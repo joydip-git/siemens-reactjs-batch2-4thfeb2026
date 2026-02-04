@@ -1,3 +1,4 @@
+import ProductDetail from '../products/product-detail/ProductDetail'
 import ProductList from '../products/product-list/ProductList'
 import './App.css'
 
@@ -8,6 +9,8 @@ function App() {
       PMS App
       <br />
       <ProductList />
+      <br />
+      <ProductDetail />
     </div>
   )
 }

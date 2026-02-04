@@ -56,3 +56,53 @@
     </div>
 </div>
  */
+
+import type { AxiosResponse } from "axios";
+import type { ApiResponse } from "../../../models/apiresponse";
+import { getProduct } from "../../../services/product-service";
+import type { Product } from "../../../models/product";
+import { useState } from "react";
+
+
+const ProductDetail = () => {
+    const [product, setProduct] = useState<Product | undefined>(undefined)
+    const [error, setError] = useState('')
+
+    const fetchProductById = async (id: number) => {
+        try {
+            const resp: AxiosResponse<ApiResponse<Product>> = await getProduct(id)
+            const apiRespone: ApiResponse<Product> = resp.data;
+            if (apiRespone.data !== null) {
+                setProduct(apiRespone.data)
+                setError('')
+            } else {
+                setProduct(undefined)
+                //console.log(apiRespone.message);
+                setError(apiRespone.message)
+            }
+        } catch (error: any) {
+            setProduct(undefined)
+            //console.log(error);
+            setError(error.message)
+        }
+    }
+    return (
+        <>
+            <div>
+                <label htmlFor="txtId">Id: &nbsp;</label>
+                <input type="text" id="txtId" onInput={
+                    (e) => {
+                        const txtBox = e.target as HTMLInputElement;
+                        fetchProductById(Number(txtBox.value))
+                    }
+                } />
+            </div>
+            <br />
+            <div>
+                Fetched Product Name: &nbsp;{product ? product.productName : error}
+            </div>
+        </>
+    )
+}
+
+export default ProductDetail
