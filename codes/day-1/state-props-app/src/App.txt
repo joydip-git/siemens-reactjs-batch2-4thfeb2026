@@ -1,0 +1,73 @@
+import { useState } from "react";
+
+//import { Component, type ReactNode } from "react";
+
+type StateType = {
+  counter: number,
+  name?: string
+}
+const App = () => {
+  console.log('render');
+  //let counter = 0
+  const [state, setState] = useState<StateType>({ counter: 0, name: 'joydip' })
+  const counterHandler = () => {
+    console.log(state);
+    //counter = counter + 1
+    //setState({ ...state, counter: 100 })
+    setState(
+      (currentState) => {
+        return {
+          ...currentState,
+          counter: currentState.counter + 1
+        }
+      }
+    )
+    console.log(state);
+  }
+  return (
+    <div>
+      <span>Counter: &nbsp; {state.counter}</span>
+      <br />
+      <button type="button" onClick={counterHandler}>Increase</button>
+    </div>
+  )
+}
+
+/*
+type StateType = {
+  counter: number,
+  x: number
+}
+class App extends Component<{}, StateType> {
+  state = {
+    counter: 0,
+    x: 0
+  };
+
+  counterHandler = () => {
+    console.log(this.state.counter);
+    //counter = counter + 1
+    // this.setState({
+    //   counter: 100
+    // })
+    this.setState(
+      (currentState) => {
+        return {
+          counter: currentState.counter + 1
+        }
+      }
+    )
+    console.log(this.state.counter);
+  }
+  render(): ReactNode {
+    return (
+      <div>
+        <span>Counter: &nbsp; {this.state.counter}</span>
+        <br />
+        <button type="button" onClick={this.counterHandler}>Increase</button>
+      </div>
+    )
+  }
+}
+  */
+export default App

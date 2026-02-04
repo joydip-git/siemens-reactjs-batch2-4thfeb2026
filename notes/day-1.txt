@@ -1,0 +1,37 @@
+git repo:
+---------------
+https://github.com/joydip-git/siemens-reactjs-batch2-4thfeb2026
+
+
+React JS:
+-----------------------
+react, react-dom
+
+create-react-app
+
+vite => build tool
+create react app using vite:
+>npm create vite@latest
+
+next js, Gatsby, react-router, tanstack etc.
+
+
+
+components:
+	a. functional component
+	b. class component
+
+
+class App{
+
+	x=0
+	update(){
+		this.x++
+	}
+
+}
+
+{{x}}
+<button (click)="update()">
+
+
