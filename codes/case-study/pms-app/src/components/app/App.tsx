@@ -8,9 +8,9 @@ function App() {
     <div>
       PMS App
       <br />
-      <ProductList />
+      {/* <ProductList />
       <br />
-      <ProductDetail />
+      <ProductDetail /> */}
     </div>
   )
 }

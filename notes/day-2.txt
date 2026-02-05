@@ -1,0 +1,66 @@
+component lifecycle:
+-----------------------------
+1. write code that should be executed when the component is mounted
+2. write code that should be executed when the component receives new props  or internal state got updated
+3. write code that should be executed everytime the component is rendered
+4. write code that should be executed when the component is unmounted
+
+
+function Test(props){
+useEffect(
+	()=>{
+		//code
+		sub
+		return () => { //clean up code }
+	}
+)
+
+useEffect(
+	()=>{
+		//code
+		return () => { //clean up code }
+	},
+	[props.id, counter]
+)
+
+useEffect(
+	()=>{
+		//code
+		return () => { //clean up code }
+	},
+	[]
+)
+
+	return ....
+}
+
+
+
+function outer(){
+	const x = 10
+
+	function inner(){
+		clg(x)
+	}	
+	return inner
+}
+
+const innerRef = outer() 
+innerRef()
+
+/home => Home
+/     => Home
+
+/products/all => PL
+/products/view/{} => PD
+/products/edit/{} => UP
+/products/add => AP
+
+* => PageNotFound
+
+
+
+
+
+
+
