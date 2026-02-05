@@ -1,16 +1,14 @@
-import ProductDetail from '../products/product-detail/ProductDetail'
-import ProductList from '../products/product-list/ProductList'
+import AppRoutes from '../../routes/AppRoutes'
+import DashBoard from '../common/dash-board/DashBoard'
 import './App.css'
 
 function App() {
 
   return (
     <div>
-      PMS App
+      <DashBoard />
       <br />
-      {/* <ProductList />
-      <br />
-      <ProductDetail /> */}
+      <AppRoutes />
     </div>
   )
 }
