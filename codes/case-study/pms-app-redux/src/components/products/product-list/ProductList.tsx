@@ -4,30 +4,31 @@ import type { Product } from "../../../models/product"
 import ProductRow from "../product-row/ProductRow"
 import { getProducts } from "../../../services/product-service"
 import type { ApiResponse } from "../../../models/apiresponse"
+import { useDispatch, useSelector } from "react-redux"
+import type { PmsAppStoreMapType } from "../../../redux/store"
+import { failedAction, initiateAction, successAction } from "../../../redux/products-slice"
 
 const ProductList = () => {
-    const [products, setProducts] = useState<Product[]>([])
-    const [isRequestOver, setIsRequestOver] = useState(false)
-    const [error, setError] = useState('')
+    const { error, isRequestOver, products } = useSelector((map: PmsAppStoreMapType) => map.productsState)
+    const dispatch = useDispatch()
 
     const fetchProducts = async () => {
+
+        dispatch(initiateAction())
         try {
             const resp = await getProducts()
             const apiResponse = (await resp.json()) as ApiResponse<Product[]>
             if (apiResponse.data !== null) {
-                setProducts(apiResponse.data)
-                setIsRequestOver(true)
-                setError('')
+                //dispatch({type:'fetch_success', payload: apiRe})
+                dispatch(successAction(apiResponse.data))
             } else {
-                setProducts([])
-                setError(apiResponse.message)
-                setIsRequestOver(true)
+                //dispatch({type:'fetch_failed', payload:})
                 //console.log(apiResponse.message);
+                dispatch(failedAction(apiResponse.message))
             }
-        } catch (error:any) {
-            setProducts([])
-            setError(error.message)
-            setIsRequestOver(true)
+        } catch (error: any) {
+            //dispatch({type:'', payload:})
+            dispatch(failedAction(error.message))
         }
     }
 
@@ -81,7 +82,7 @@ const ProductList = () => {
             </div>
         )
     }
-    return design       
+    return design
 }
 
 export default ProductList

@@ -1,0 +1,1 @@
+//methods to register and authenticate an user against the data by sending HTTP request to backend RESTful API server

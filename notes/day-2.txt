@@ -34,6 +34,45 @@ useEffect(
 	return ....
 }
 
+you want to pass data from one to another component:
+
+a. components are nested into each other (shallow): props
+b. components are nested into each other (deep): context
+c. components are NOT nested into each other:
+	1. sibling => rxJS, app-wide state management
+	2. routed component: via routes, via rxjs, app-wide state management
+
+Redux:
+--------------
+state => object
+reducer => function 
+store => oebject which is a collection of reducers (alog with the states)
+dispatch => function (to send request to store)
+action => object that is sent to the store using dispatch() function
+	  contains one information: type of operation/action to perform on the state
+		contains additional (optional) data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function outer(){
@@ -57,6 +96,22 @@ innerRef()
 /products/add => AP
 
 * => PageNotFound
+
+Route, Routes
+<BrowserRouter>
+	<Routes>
+		<Route path='products' element={<PL />}/>
+	</Routes>
+</BrowserRouter>
+
+const route:RouteObject = {
+	path: 'products/all',
+	element: <PL />
+}
+
+useRoutes([route])
+
+BrowerRouter, HashRouter, MemoryRouter
 
 
 

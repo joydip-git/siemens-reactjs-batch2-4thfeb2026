@@ -1,7 +1,7 @@
 //import { Fragment } from "react/jsx-runtime";
 type CounterPropType = {
     counterValue: number,
-    handler: () => void
+    handler: (actionType: string, payload: number) => void
 }
 const Counter = ({ counterValue, handler }: Readonly<CounterPropType>) => {
     // args.counterValue=100
@@ -10,8 +10,10 @@ const Counter = ({ counterValue, handler }: Readonly<CounterPropType>) => {
         <>
             <span>Counter: &nbsp; {counterValue}</span>
             <br />
-            <button type="button" onClick={handler}>Increase</button>
+            <button type="button" onClick={() => handler("increase", 2)}>Increase</button>
             {/* </Fragment > */}
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" onClick={() => handler("decrease", 1)}>Decrease</button>
         </>
     )
 }
