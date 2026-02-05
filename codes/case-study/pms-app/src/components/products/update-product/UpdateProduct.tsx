@@ -1,4 +1,9 @@
 //design to use
+
+import { useEffect, useState } from "react"
+import StoreInstance from "../../../services/storage"
+import type { Subscription } from "rxjs"
+
 /**
  * <div class="container">
     <div class="row">
@@ -32,7 +37,7 @@
                 <div class="form-group">
                     <label for="price">Price:</label>
                     <input type="number" name="price" id="price" class="form-control">
-	       </div>
+           </div>
 
                 <div class="form-group">
                     <label for="starRating">Rating:</label>
@@ -59,9 +64,33 @@
 </div>
  */
 const UpdateProduct = () => {
-  return (
-    <div>UpdateProduct</div>
-  )
+    const [id, setId] = useState(0)
+
+    useEffect(
+        () => {
+            const subscription: Subscription = StoreInstance
+                .storeObservable
+                .subscribe(
+                    (data) => {
+                        setId(data)
+                    }
+                )
+
+            return () => {
+                subscription?.unsubscribe()
+            }
+        }, []
+    )
+
+    useEffect(
+        () => {
+
+        }, [id]
+    )
+
+    return (
+        <div>UpdateProduct: &nbsp;{id}</div>
+    )
 }
 
 export default UpdateProduct
